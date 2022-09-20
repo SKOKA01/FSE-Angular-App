@@ -1,0 +1,91 @@
+<br/>
+<h3>Add Companies</h3>
+<div class="container-fluid">
+<form [formGroup]="companyForm" (ngSubmit)="onFormSubmit(companyForm.value)">
+    <div class="container-fluid"  >
+        <table class="table table-bordered ">
+            <br/>
+            <tr>
+                <td>
+                    <h6>Company Code</h6>
+                </td>             
+                <td>
+                    <input type="number" formControlName="companyCode" placeholder="Company Code">
+                    <div *ngIf="companyForm.errors?.['required']" class="alert alert-danger">
+                        Name is required.
+                      </div>
+                </td>
+                <td>
+                    <h6>Company Name</h6>
+                </td>   
+                <td>
+                    <input type="text" formControlName="companyName" ng-model="companyName"  placeholder="Company Name">
+                    <!--<span ng-show="companyForm.companyName.$touched && companyForm.companyName.$invalid">company name is required.</span>-->
+                </td>
+            </tr>
+            <br/>          
+            <tr>  
+                <td>
+                    <h6>Company CEO</h6>
+                </td>            
+                <td>
+                    <input type="text" formControlName="companyCEO" placeholder="Company CEO">
+                    <span *ngIf="!companyForm.get('companyCEO').value && companyForm.get('companyCEO').touched"></span>
+                </td>
+                <td>
+                    <h6>Company Turn Over</h6>
+                </td>   
+                <td>
+                    <input type="number" formControlName="companyTurnOver" ngModel="companyTurnOver" placeholder="Company turnover">
+                    <!--<div > <p>turnover : {{companyForm.controls['companyTurnOver'].value | json }}</p></div>--><br/>
+                    <span *ngIf="companyForm.get('companyTurnOver').errors.min">
+                        TurnOver should be greater than 10 crore.
+                   </span>                                 
+                </td>
+            </tr>
+            <br/>          
+            <tr>
+                <td>
+                    <h6>Company Website</h6>
+                </td>                  
+                <td>
+                    <input type="text" formControlName="companyWebsite" placeholder="Company Website">
+                    <span *ngIf="!companyForm.get('companyWebsite').value && companyForm.get('companyWebsite').touched"></span>
+                </td>
+                <td>
+                    <h6>Stock Exchange (BSE / NSE)</h6>
+                </td>   
+                <td>
+                    <input type="text" formControlName="stockExchange" placeholder="Stock Exchange">
+                    <span *ngIf="!companyForm.get('stockExchange').value && companyForm.get('stockExchange').touched"></span>
+                </td>
+                <td>
+                    <h6>Status</h6>
+                </td>   
+                <td>
+                    <input type="text" formControlName="status" placeholder="status" ng-vmodel="status">                   
+                </td>
+            </tr>
+            <br/>           
+            <tr>
+                <td>
+                   
+                </td>                    
+                <td  class="content-center">  
+                  <button type="submit" class="btn btn-outline-success" >Register</button>  &nbsp;&nbsp;&nbsp;&nbsp;    
+                </td>
+                <td>
+                   
+                </td>   
+                <td>
+                  <button type="reset" class="btn btn-outline-success"  (click)="resetForm()">Reset</button>  
+                </td>                               
+              </tr>
+              <p *ngIf="dataSaved" style="color:rgb(0, 128, 0);font-size:20px;font-weight:bold" Class="success" align="left">  
+                {{message}}  
+              </p>  
+              <br/>
+        </table>
+    </div>
+    </form>    
+</div>   

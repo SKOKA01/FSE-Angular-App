@@ -1,0 +1,44 @@
+<div class="nav-bar">
+    <br/>   
+   <div class="row">               
+       <div class="col" style="background-color:white;">
+           <span></span>                   
+           <h1> E Stocks</h1>           
+       </div>
+      
+       <div class="col">
+           
+       </div>
+       <div class="col">
+           
+       </div>
+       <div class="col" style="background-color:white">
+           <input type="search" placeholder="Company Code" aria-label="Search" [(ngModel)]="searchText" width="100px">
+       </div>  
+       <div class="col" style="background-color:white;">
+           <button class="btn btn-success my-2 my-sm-0" type="submit" (click)= "getCompanybyCode()" >Search</button>
+       </div>
+       <div class="col" style="background-color:white;">
+           <a class="btn btn-success my-2 my-sm-0" href="#register" type="submit">Register Company</a>&nbsp;&nbsp;
+       </div>    
+   </div>  
+   
+   <!-- <button class="btn btn-success my-2 my-sm-0" type="submit">List All Companies</button> -->
+   
+</div>
+<br/>
+<div class="container-fluid" width="300px">
+   <table class="table border">
+       <tr>
+           <td>Company Code</td>
+           <td><h5>{{this.company.companyCode}}</h5></td>                                       
+           <td>Company Name</td>
+           <td><h5>{{this.company.companyName}}</h5></td>
+           <td>Current Stock Price</td>
+           <td><h5>{{ this.currentStockPrice }}</h5></td>
+           <td><a class="btn btn-outline-success"  href="#StockList">List all Stocks&nbsp;&nbsp;</a></td>
+           <!-- <td><button class="btn btn-outline-primary">Update Stocks&nbsp;&nbsp;</button></td>
+           <td><button class="btn btn-outline-danger">Delete Stocks</button></td>           -->
+       </tr>
+   </table>
+</div>

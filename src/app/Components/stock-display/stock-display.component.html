@@ -1,0 +1,51 @@
+<h3>List Of Companies</h3>
+<br/>
+<div class="table table-primary" >
+    <!-- <table class="container" >
+        <tr>
+            <td><button class="btn btn-primary">Stock Price</button></td>
+            <td><button class="btn btn-primary">Date</button></td>
+            <td><button class="btn btn-primary">Time</button></td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>20/02/2022</td>
+            <td>13:00</td>
+        </tr>
+        <tr>
+            <td>500</td>
+            <td>21/02/2022</td>
+            <td>01:00</td>
+        </tr>
+        <tr>
+            <td>5000</td>
+            <td>20/02/2022</td>
+            <td>12:00</td>
+        </tr>
+    </table> -->
+    <table class="table" >  
+        <tr ngclass="btn-primary">  
+          <th>CompanyCode</th>  
+          <th>CompanyName</th>  
+          <th>CompanyCEO</th>  
+          <th>CompanyTurnOver</th>  
+          <th>CompanyWebsite</th>  
+          <th>StockExchange</th>  
+          <th>Action</th>            
+        </tr>
+       
+        <tr *ngFor="let company of allCompanies | async">  
+          <td>{{company.companyCode}}</td>  
+          <td>{{company.companyName}}</td>  
+          <td>{{company.companyCEO}}</td>  
+          <td>{{company.companyTurnOver}}</td>  
+          <td>{{company.companyWebsite}}</td>  
+          <td>{{company.stockExchange}}</td>
+          <!-- <td><button class="btn btn-outline-danger" (click)="getStockPriceByCompanyCode(company.companyCode)">{{stock_price.get(company.companyCode)}}</button></td>             -->
+          <td><button  class="btn btn-outline-danger" (click)= "deleteCompanyByCode(company.companyCode)">Delete Company</button></td>
+        </tr>  
+
+
+
+     </table>  
+</div><br>

@@ -1,0 +1,58 @@
+<h3>Stock Lists</h3>
+<br/>
+<div class="container-fluid" >  
+    <form class="row row-cols-sm-auto">
+        <div class="container-fluid">
+          <div class="input-group">
+            <input class="form-control" type= "text" placeholder="yyyy-mm-dd"
+             name="d1" [(ngModel)]="searchfromdate" style="width: 150px;" ngbDatepicker #d1="ngbDatepicker">
+            <!-- <p>{{ searchfromdate | json }}</p>
+            <p>{{ searchtodate | json}}</p>
+            <p>{{ searchcode | json}}</p> -->
+             <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button">From</button>&nbsp;&nbsp;
+            <input class="form-control" type= "text"  placeholder="yyyy-mm-dd"
+            name="d2" [(ngModel)]="searchtodate" style="width: 150px;" ngbDatepicker #d2="ngbDatepicker">
+           <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button">To</button>&nbsp;&nbsp;
+            <input  name="searchcode" type="text" placeholder="Company Code" aria-label="Search"
+            [(ngModel)]="searchcode" width="100px">&nbsp;&nbsp;
+            <!-- <input type="text" placeholder="Company Name" aria-label="Search"
+            [(ngModel)]="searchcompany" width="100px">   -->
+            <button class="btn btn-success my-2 my-sm-0" type="submit" (click)= "getCompanybyCode()" >Search</button>&nbsp;&nbsp;   
+            <button class="btn btn-success my-2 my-sm-0" type="submit" (click)= "getCompanybyCode()" >All Stocks</button>&nbsp;&nbsp;   
+            <br/><br/>
+        </div>
+    </div>
+  </form>    
+</div>
+<br/>
+<div class="container-fluid" >  
+      <form  [formGroup]="StockForm" (ngSubmit)="onFormSubmit(StockForm.value)" >
+        <table class="table table-primary">
+            <br/>
+        <tr >  
+          <th>CompanyCode</th>  
+          <th>CompanyName</th>  
+          <th>StockPrice</th>  
+          <th>Date</th>                  
+        </tr>   
+        <tr *ngFor="let stock of allStocks | async" >  
+            
+                <td>{{stock.company_Code}}</td>  
+                <td>{{stock.company_Name}}</td>  
+                <td>{{stock.stock_Price}}</td>  
+                <td>{{stock.updated_On}}</td>
+                <!-- <td><button class="btn btn-outline-primary">Update&nbsp;&nbsp;</button></td>
+                <td><button class="btn btn-outline-danger">Delete</button></td>                      -->          
+        </tr>   
+        <tr>
+            <td style="width: 100px;"><input type="text" formControlName="company_Code" placeholder="Company Code"></td>
+            <td  style="width: 100px;"><input  type="text" formControlName="company_Name" placeholder="Company Name"></td>        
+            <td  style="width: 100px;"><input style="width: 100px;"type="text" formControlName="stock_Price" placeholder="Stock Price">
+              <input style="width: 100px;"type="hidden" formControlName="stock_Price" mg-model="Updated_By" name="Updated_By" value="Updated_By">
+            </td>                    
+           <!-- <td ><input  type="text" formControlName="updated_On" value = "{{ this.myDate }}" placeholder="{{ this.myDate }}"></td>                    -->           
+           <td><button type="submit" class="btn btn-outline-success">Add Stock</button></td>
+        </tr>
+        </table>
+     </form>             
+</div>
